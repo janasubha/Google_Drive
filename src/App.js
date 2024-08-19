@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./Components/Header";
+import styled from "styled-components";
+import Drive from "./Components/Drive";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import SideBar from "./Components/SideBar";
+import Model from "./Components/Model";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Container>
+        <SideBar/>
+        <Routes>
+          <Route path="/Drive" element={<Drive />} />
+        </Routes>
+      </Container>
+      <Model/>
+    </Router>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+display: flex;
+`;
